@@ -10,7 +10,7 @@ Requirements:
 Clone the repository:
 
 ```
-git clone git@github.com:starchx/devlab-eks-alb-2048game.git
+git clone https://github.com/starchx/devlab-eks-alb-2048game.git
 cd devlab-eks-alb-2048game
 ```
 
@@ -60,7 +60,7 @@ Disable Cloud 9 Managed Credentials
 Clone the repository again via Cloud 9 terminal:
 
 ```
-git clone git@github.com:starchx/devlab-eks-alb-2048game.git
+git clone https://github.com/starchx/devlab-eks-alb-2048game.git
 cd devlab-eks-alb-2048game
 ```
 

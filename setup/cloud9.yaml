@@ -1,0 +1,53 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create a Cloud9 environment and EC2 Admin role (create the stack in the AWS Console)
+
+Resources:
+  EKSCloud9:
+    Type: AWS::Cloud9::EnvironmentEC2
+    Properties: 
+      AutomaticStopTimeMinutes: 30
+      Description: "DevLab EKS ALB 2048 Game Cloud9 environment"
+      InstanceType: t3.micro
+  AdminRole: 
+    Type: "AWS::IAM::Role"
+    Properties: 
+      AssumeRolePolicyDocument: 
+        Version: "2012-10-17"
+        Statement: 
+          - 
+            Effect: "Allow"
+            Principal: 
+              Service: 
+                - "ec2.amazonaws.com"
+            Action: 
+              - "sts:AssumeRole"
+      Path: "/"
+  RolePolicy: 
+    Type: "AWS::IAM::Policy"
+    Properties: 
+      PolicyName: "Admin"
+      PolicyDocument: 
+        Version: "2012-10-17"
+        Statement: 
+          - 
+            Effect: "Allow"
+            Action: "*"
+            Resource: "*"
+      Roles: 
+        - 
+          Ref: "AdminRole"
+  AdminInstanceProfile: 
+    Type: "AWS::IAM::InstanceProfile"
+    Properties: 
+      Path: "/"
+      Roles: 
+        - 
+          Ref: "AdminRole"
+
+Outputs:
+  InstanceProfile:
+    Description: EC2 instance profile for the Cloud9 instance
+    Value: !Ref "AdminInstanceProfile"
+  Cloud9EnvironmentId:
+    Description: Cloud 9 Environment ID
+    Value: !Ref "EKSCloud9"

@@ -20,7 +20,6 @@ Create Cloud 9 CloudFormation stack
 
 ```
 cd setup
-chmod +x cloud9.sh
 ./cloud9.sh
 ```
 
@@ -37,7 +36,6 @@ AWS_CONSOLE_USER_ARN=<AWS CONSOLE LOGIN ARN>
 * Run the script to share the environment:
 
 ```
-chmod +x share-cloud9.sh
 ./share-cloud9.sh
 ```
 
@@ -70,7 +68,6 @@ Run bootstrap.sh from Cloud 9 to create EKS cluster
 
 ```
 cd setup
-chmod +x bootstrap.sh
 ./bootstrap.sh
 ```
 
@@ -80,7 +77,6 @@ Run reset.sh from Cloud 9 to reset for next customer
 
 ```
 cd setup
-chmod +x reset.sh
 ./reset.sh
 ```
 
@@ -90,7 +86,6 @@ Run cleanup.sh from Cloud 9 to create EKS cluster
 
 ```
 cd setup
-chmod +x cleanup.sh
 ./cleanup.sh
 ```
 

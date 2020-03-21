@@ -89,4 +89,4 @@ cd setup
 ./cleanup.sh
 ```
 
-Delete the Cloud 9 CloudFormation stack from AWS Console
+Delete the Cloud 9 CloudFormation stack named **devlab-eks-alb-2048game** from AWS Console

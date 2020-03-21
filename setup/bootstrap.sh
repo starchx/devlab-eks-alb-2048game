@@ -2,6 +2,13 @@
 
 EKS_CLUSTER_NAME=eks-alb-2048game
 
+# Sync time
+sudo service ntpd stop
+sudo ntpdate pool.ntp.org
+sudo service ntpd start
+sleep 10
+sudo ntpstat || true
+
 # Upgrade awscli
 
 echo "Upgrade awscli"

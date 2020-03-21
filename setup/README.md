@@ -90,3 +90,5 @@ cd setup
 ```
 
 Delete the Cloud 9 CloudFormation stack named **devlab-eks-alb-2048game** from AWS Console
+
+Delete the EKS CloudFormation stack named **eksctl-eks-alb-2048game-cluster** if the auto deletion was failed.

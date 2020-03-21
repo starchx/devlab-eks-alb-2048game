@@ -13,3 +13,5 @@ CLOUD9_INSTANCE_ID=$(aws ec2 describe-instances --filters "Name=tag:aws:cloud9:e
 echo; echo "Assign Cloud 9 Instance Role: $ADMIN_ROLE"
 
 aws ec2 associate-iam-instance-profile --iam-instance-profile Name=$ADMIN_ROLE --instance-id $CLOUD9_INSTANCE_ID
+
+echo; echo "Ready to continue the next step."

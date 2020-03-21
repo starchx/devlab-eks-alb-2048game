@@ -2,6 +2,14 @@
 
 EKS_CLUSTER_NAME=eks-alb-2048game
 
+# Upgrade awscli
+
+echo "Upgrade awscli"
+
+pip3 install --upgrade --user awscli
+echo 'PATH=$HOME/.local/bin:$PATH' >> ~/.bash_profile
+source ~/.bash_profile
+
 # Install kubectl, eksctl, aws-iam-authenticator, create a key pair, and confirm the AWS CLI version
 
 echo "Installing kubectl"
@@ -43,7 +51,7 @@ echo; echo "For example: arn:aws:sts::1234567890:assumed-role/cloud9-AdminRole-1
 
 # Create EKS cluster
 
-echo; echo "Creating EKS cluster"
+echo; echo "Creating EKS cluster. It can take up to 30 minutes."
 
 eksctl create cluster --ssh-access --version 1.15 --node-type t3.medium --node-private-networking --name $EKS_CLUSTER_NAME
 

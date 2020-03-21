@@ -166,7 +166,7 @@ Navigate to [AWS Console Load Balancer page](https://console.aws.amazon.com/ec2/
 
 ## Step 10:
 
-Open a browser and navigate to the ALB endpoint (Shown in ADDRESS field from the previous command `kubectl get ingress` output or from AWS Load Balancer Console) to see the 2048 game application.
+Open a browser and navigate to the ALB endpoint (shown in ADDRESS field from the previous command `kubectl get ingress/2048-ingress -n 2048-game` output or from AWS Load Balancer Console) to see the 2048 game application.
 
 ## Step 11:
 

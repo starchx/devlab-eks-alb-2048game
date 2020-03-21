@@ -8,3 +8,5 @@ kubectl delete -f https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingr
 kubectl delete -f https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/v1.1.4/docs/examples/2048/2048-namespace.yaml
 kubectl delete -f https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/v1.1.4/docs/examples/alb-ingress-controller.yaml
 kubectl delete -f https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/v1.1.4/docs/examples/rbac-role.yaml
+
+echo; echo "Not found error is OK to ignore. It means the resource has already been cleaned up."

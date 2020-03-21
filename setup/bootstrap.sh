@@ -64,3 +64,5 @@ eksctl create iamserviceaccount \
     --attach-policy-arn $POLICY_ARN \
     --override-existing-serviceaccounts \
     --approve
+
+echo; echo "Lab is ready to use."

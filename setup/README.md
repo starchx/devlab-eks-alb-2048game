@@ -53,7 +53,7 @@ Disable Cloud 9 Managed Credentials
 * Left menu **AWS SETTINGS** and choose **Credentials**
 * Disable AWS managed temporary credentials:
 
-![Disable Cloud 9 Managed Credentials](https://github.com/starchx/devlab-eks-alb-2048game/tree/master/setup/disable-cloud9-credentials.png "Disable Cloud 9 Managed Credentials")
+![Disable Cloud 9 Managed Credentials](https://github.com/starchx/devlab-eks-alb-2048game/tree/master/setup/disable-cloud9-credentials.png?raw=true "Disable Cloud 9 Managed Credentials")
 
 ### Step 5
 

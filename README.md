@@ -13,7 +13,15 @@ If you are trying this lab from AWS Submit, the lab would have been set up for y
 * Open [AWS Cloud 9 Console](https://console.aws.amazon.com/cloud9/home)
 * Find the environment that has *EKSCloud9* as prefix in title and *DevLab EKS ALB 2048 Game Cloud9 environment* in description.
 * Click *Open IDE* button.
-* Complete the following steps to finish the lab.
+* Complete the following steps in Cloud 9 to finish the lab.
+
+## Step 0
+
+In Cloud 9 environment, maximize the Terminal, and load the profile with this command:
+
+```
+source ~/.bash_profile
+``` 
 
 ## Step 1
 

@@ -1,3 +1,7 @@
+## About this lab
+
+[Kubernetes Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) is an API resource that allows you manage external or internal HTTP(S) access to Kubernetes services running in a cluster. [Amazon Elastic Load Balancing Application Load Balancer (ALB)](https://aws.amazon.com/elasticloadbalancing/features/#Details_for_Elastic_Load_Balancing_Products) is a popular AWS service that load balances incoming traffic at the application layer (layer 7) across multiple targets. The lab walks through the steps of setting up ALB Ingress controller, deploying sample applicatoin (2048 game) and exposing the application publicly via ALB.
+
 ## How Kubernetes Ingress works with [aws-alb-ingress-controller](https://github.com/kubernetes-sigs/aws-alb-ingress-controller)
 
 The following diagram details the AWS components that the aws-alb-ingress-controller creates whenever an Ingress resource is defined by the user. The Ingress resource routes ingress traffic from the Application Load Balancer(ALB) to the Kubernetes cluster.

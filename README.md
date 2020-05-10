@@ -72,7 +72,7 @@ The *bootstrap.sh* script will:
 
 - Upgrade AWS CLI to latest version.
 - Install kubectl, [eksctl](https://eksctl.io/).
-- Crerat an EKS cluster with eksctl.
+- Create an EKS cluster with eksctl.
 - Set up [IAM roles for service accounts](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) for ALB Ingress Controller.
 
   ![Cloud9 Terminal](https://raw.githubusercontent.com/starchx/devlab-eks-alb-2048game/master/setup/images/cloud9-terminal.png)

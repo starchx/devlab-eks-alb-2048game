@@ -4,37 +4,49 @@ This lab is provided as part of [AWS Summit Online](https://aws.amazon.com/event
 
 ℹ️ You will run this lab in your own AWS account. Please follow directions at the end of the lab to remove resources to avoid future costs.
 
+### About this lab
+
 [Kubernetes Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) is an API resource that allows you manage external or internal HTTP(S) access to Kubernetes services running in a cluster. [Amazon Elastic Load Balancing Application Load Balancer (ALB)](https://aws.amazon.com/elasticloadbalancing/features/#Details_for_Elastic_Load_Balancing_Products) is a popular AWS service that load balances incoming traffic at the application layer (layer 7) across multiple targets. The lab walks through the steps of setting up ALB Ingress controller, deploying sample application (game 2048) and exposing the application publicly via ALB.
 
 ### How Kubernetes Ingress works with [aws-alb-ingress-controller](https://github.com/kubernetes-sigs/aws-alb-ingress-controller)
 
 The following diagram details the AWS components that the aws-alb-ingress-controller creates whenever an Ingress resource is defined by the user. The Ingress resource routes ingress traffic from the Application Load Balancer(ALB) to the Kubernetes cluster.
 
-![How Kubernetes Ingress works](https://raw.githubusercontent.com/starchx/devlab-eks-alb-2048game/master/setup/images/alb-ingress-controller)
+![How Kubernetes Ingress works](https://raw.githubusercontent.com/starchx/devlab-eks-alb-2048game/master/setup/images/alb-ingress-controller.png)
 
 ## Setup
 
 ### Step 1 - Create Cloud9 environment via AWS CloudFormation
 
+ℹ️ This lab has been tested in both N. Virginia (us-east-1) and Sydney (ap-southeast-2) region, although it should work in other regions with EKS service enabled.
+
 - Download the [Cloud9 CloudFormation template](https://raw.githubusercontent.com/starchx/devlab-eks-alb-2048game/master/setup/cloud9.yaml).
 - Launch [AWS CloudFormation Console](https://console.aws.amazon.com/cloudformation/home?#/stacks/create/template) to create a new stack.
 - Select *Upload a template file* and choose the downloaded file, click *Next*.
-![Create Cloud9 Stack](https://raw.githubusercontent.com/starchx/devlab-eks-alb-2048game/master/setup/images/create-cloud9-stack.png)
+
+  ![Create Cloud9 Stack](https://raw.githubusercontent.com/starchx/devlab-eks-alb-2048game/master/setup/images/create-cloud9-stack.png)
+
 - Set the stack name **devlab-eks-alb-2048game** and click *Next*.
 - Click *Next* again to the stack review page, tick **I acknowledge that AWS CloudFormation might create IAM resources** box and click *Create stack*.
-![Acknowledge Stack Capabilities](https://raw.githubusercontent.com/starchx/devlab-eks-alb-2048game/master/setup/images/acknowledge-stack-capabilities.png)
+
+  ![Acknowledge Stack Capabilities](https://raw.githubusercontent.com/starchx/devlab-eks-alb-2048game/master/setup/images/acknowledge-stack-capabilities.png)
+
 - Wait for a few minutes for stack creation to complete.
 - Select the stack and note down the outputs (*Cloud9EnvironmentId* & *InstanceProfile*) on *outputs* tab for next step.
-![Cloud9 Stack Output](https://raw.githubusercontent.com/starchx/devlab-eks-alb-2048game/master/setup/images/stack-cloud9-output.png)
+
+  ![Cloud9 Stack Output](https://raw.githubusercontent.com/starchx/devlab-eks-alb-2048game/master/setup/images/stack-cloud9-output.png)
 
 ### Step 2 - Assign instance role to Cloud9 instance
 
 - Launch [AWS EC2 Console](https://console.aws.amazon.com/ec2/v2/home?#Instances).
 - Use stack output value of *Cloud9EnvironmentId* as filter to find the Cloud9 instance.
-![Locate Cloud9 Instance](https://raw.githubusercontent.com/starchx/devlab-eks-alb-2048game/master/setup/images/locate-cloud9-instance.png)
+
+  ![Locate Cloud9 Instance](https://raw.githubusercontent.com/starchx/devlab-eks-alb-2048game/master/setup/images/locate-cloud9-instance.png)
+
 - Right click the instance, *Instance Settings* -> *Attach/Replace IAM Role*.
 - Choose the profile name matches to the *InstanceProfile* value from the stack output, and click *Apply*.
-![Set Instance Role](https://raw.githubusercontent.com/starchx/devlab-eks-alb-2048game/master/setup/images/set-instance-role.png)
+
+  ![Set Instance Role](https://raw.githubusercontent.com/starchx/devlab-eks-alb-2048game/master/setup/images/set-instance-role.png)
 
 ### Step 3 - Disable Cloud9 Managed Credentials
 
@@ -44,7 +56,7 @@ The following diagram details the AWS components that the aws-alb-ingress-contro
 - At left menu *AWS SETTINGS*, click *Credentials*.
 - Disable AWS managed temporary credentials:
 
-![Disable Cloud 9 Managed Credentials](https://raw.githubusercontent.com/starchx/devlab-eks-alb-2048game/master/setup/images/disable-cloud9-credentials.png)
+  ![Disable Cloud 9 Managed Credentials](https://raw.githubusercontent.com/starchx/devlab-eks-alb-2048game/master/setup/images/disable-cloud9-credentials.png)
 
 ### Step 4 - Bootstrap lab environment on Cloud9 IDE
 
@@ -63,7 +75,7 @@ The *bootstrap.sh* script will:
 - Crerat an EKS cluster with eksctl.
 - Set up [IAM roles for service accounts](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) for ALB Ingress Controller.
 
-![Cloud9 Terminal](https://raw.githubusercontent.com/starchx/devlab-eks-alb-2048game/master/setup/images/cloud9-terminal.png)
+  ![Cloud9 Terminal](https://raw.githubusercontent.com/starchx/devlab-eks-alb-2048game/master/setup/images/cloud9-terminal.png)
 
 ## Lab
 

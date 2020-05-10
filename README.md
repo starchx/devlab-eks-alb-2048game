@@ -254,7 +254,6 @@ Run *cleanup.sh* from Cloud 9 Terminal to delete EKS cluster and its resources. 
 - Delete the EKS cluster created via bootstrap script.
 
 ```
-cd setup
 ./cleanup.sh
 ```
 

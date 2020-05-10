@@ -72,11 +72,15 @@ eksctl create cluster --ssh-access --version 1.15 --node-type t3.medium --node-p
 
 eksctl utils associate-iam-oidc-provider --cluster $EKS_CLUSTER_NAME --approve
 
-aws iam create-policy \
-    --policy-name ALBIngressControllerIAMPolicy \
-    --policy-document https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/v1.1.4/docs/examples/iam-policy.json
-
 POLICY_ARN=$(aws iam list-policies --query "Policies[?PolicyName=='ALBIngressControllerIAMPolicy'].Arn" --output text)
+
+if [ "$POLICY_ARN" == "" ]; then
+    aws iam create-policy \
+        --policy-name ALBIngressControllerIAMPolicy \
+        --policy-document https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/v1.1.4/docs/examples/iam-policy.json
+
+    POLICY_ARN=$(aws iam list-policies --query "Policies[?PolicyName=='ALBIngressControllerIAMPolicy'].Arn" --output text)
+fi
 
 eksctl create iamserviceaccount \
     --name alb-ingress-controller \

@@ -11,10 +11,10 @@ kubectl delete -f https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingr
 kubectl delete -f https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/v1.1.4/docs/examples/alb-ingress-controller.yaml
 kubectl delete -f https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/v1.1.4/docs/examples/rbac-role.yaml
 
-echo; echo "Not found error is OK to ignore. It means the resource has already been cleaned up."
+echo; echo "'Not found error' is OK to ignore. It means the resource has already been cleaned up."
 
 echo; echo "Delete EKS cluster:"
-
+sleep 30
 eksctl delete cluster --name $EKS_CLUSTER_NAME --wait
 
 if [ $? -eq 0 ]; then
@@ -23,6 +23,6 @@ else
     echo; echo "Try again by deleting the EKS cluster via CloudFormation."
     sleep 10
     aws cloudformation delete-stack --stack-name eksctl-$EKS_CLUSTER_NAME-cluster
-    aws cloudformation stack-delete-complete --stack-name eksctl-$EKS_CLUSTER_NAME-cluster
+    aws cloudformation wait stack-delete-complete --stack-name eksctl-$EKS_CLUSTER_NAME-cluster
     echo; echo "EKS cluster and its resources have been deleted."
 fi

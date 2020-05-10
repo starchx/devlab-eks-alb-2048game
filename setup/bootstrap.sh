@@ -60,7 +60,13 @@ echo; echo "For example: arn:aws:sts::1234567890:assumed-role/cloud9-AdminRole-1
 
 echo; echo "Creating EKS cluster. It can take up to 30 minutes."
 
-eksctl create cluster --ssh-access --version 1.15 --node-type t3.medium --node-private-networking --name $EKS_CLUSTER_NAME
+if [ $REGION == "us-east-1" ]; then
+    # exclude use1-az3 from us-east-1 region due to unavailability
+    AZs=$(aws ec2 describe-availability-zones --filters "Name=zone-id,Values=use1-az1,use1-az2,use1-az4,use1-az5,use1-az6" --query "AvailabilityZones[0:2].ZoneName" --output text | tr "\\t" ",")
+    ZONES="--zones=$AZs"
+fi
+
+eksctl create cluster --ssh-access --version 1.15 --node-type t3.medium --node-private-networking --name $EKS_CLUSTER_NAME $ZONES
 
 # Setup IRSA for ALB Ingress Controller
 

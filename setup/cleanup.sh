@@ -15,4 +15,14 @@ echo; echo "Not found error is OK to ignore. It means the resource has already b
 
 echo; echo "Delete EKS cluster:"
 
-eksctl delete cluster --name $EKS_CLUSTER_NAME
+eksctl delete cluster --name $EKS_CLUSTER_NAME --wait
+
+if [ $? -eq 0 ]; then
+    echo; echo "EKS cluster and its resources have been deleted."
+else
+    echo; echo "Try again by deleting the EKS cluster via CloudFormation."
+    sleep 10
+    aws cloudformation delete-stack --stack-name eksctl-$EKS_CLUSTER_NAME-cluster
+    aws cloudformation stack-delete-complete --stack-name eksctl-$EKS_CLUSTER_NAME-cluster
+    echo; echo "EKS cluster and its resources have been deleted."
+fi

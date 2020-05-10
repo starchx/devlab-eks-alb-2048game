@@ -260,12 +260,21 @@ cd setup
 
 ### Step 2
 
+Double check the EKS Cluster stack created by eksctl was deleted:
+
+- Launch [AWS CloudFormation Console](https://console.aws.amazon.com/cloudformation/home)
+- Check if the stack **eksctl-eks-alb-2048game-cluster** still exists.
+- If exists, click this stack, in the stack details pane, choose *Delete*.
+- Select *Delete* stack when prompted.
+
+### Step 3
+
 Delete the Cloud 9 CloudFormation stack named **devlab-eks-alb-2048game** from AWS Console:
 
 - Launch [AWS CloudFormation Console](https://console.aws.amazon.com/cloudformation/home)
 - Select stack **devlab-eks-alb-2048game**.
-- In the stack details pane, choose Delete.
-- Select Delete stack when prompted.
+- In the stack details pane, choose *Delete*.
+- Select *Delete* stack when prompted.
 
 ## Reference
 

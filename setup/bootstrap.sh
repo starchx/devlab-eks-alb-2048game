@@ -1,4 +1,4 @@
-#!/bin/bash +x
+#!/bin/bash
 
 EKS_CLUSTER_NAME=eks-alb-2048game
 

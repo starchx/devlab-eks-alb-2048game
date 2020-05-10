@@ -234,7 +234,9 @@ kubectl logs -n kube-system   deployment.apps/alb-ingress-controller
 
 ### Step 9
 
-Navigate to [AWS Console Load Balancer page](https://console.aws.amazon.com/ec2/v2/home#LoadBalancers:sort=loadBalancerName) to see the Load Balancer created by ALB Ingress Controller according to the Ingress resource.
+Navigate to [AWS Console Load Balancer page](https://console.aws.amazon.com/ec2/v2/home#LoadBalancers:sort=loadBalancerName) to see the Load Balancer created by ALB Ingress Controller according to the Ingress resource. Wait for Load Balancer to be **active** before heading to next step.
+
+![Wait for ALB to Active](https://raw.githubusercontent.com/starchx/devlab-eks-alb-2048game/master/setup/images/wait-for-alb-active.png)
 
 ### Step 10
 

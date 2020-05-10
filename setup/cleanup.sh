@@ -24,5 +24,7 @@ else
     sleep 10
     aws cloudformation delete-stack --stack-name eksctl-$EKS_CLUSTER_NAME-cluster
     aws cloudformation wait stack-delete-complete --stack-name eksctl-$EKS_CLUSTER_NAME-cluster
-    echo; echo "EKS cluster and its resources have been deleted."
+    if [ $? -eq 0 ]; then
+        echo; echo "EKS cluster and its resources have been deleted."
+    fi
 fi
